@@ -176,9 +176,9 @@ class NestedForm extends Field implements RelatableField
     /**
      * Create a new nested form.
      *
-     * @param  string  $name
-     * @param  string|null  $attribute
-     * @param  string|null  $resource
+     * @param string $name
+     * @param string|null $attribute
+     * @param string|null $resource
      * @return void
      */
     public function __construct(string $name, $attribute = null, $resource = null)
@@ -193,15 +193,31 @@ class NestedForm extends Field implements RelatableField
         $this->resourceClass = $resource;
         $this->resourceName = $resource::uriKey();
         $this->viaRelationship = $this->attribute;
-        $this->singularLabel = method_exists($this->resourceClass, 'singularLabel') ? $this->resourceClass::singularLabel() : Str::singular($this->name);
-        $this->pluralLabel = method_exists($this->resourceClass, 'label') ? $this->resourceClass::label() : Str::singular($this->name);
+        $this->singularLabel = method_exists(
+            $this->resourceClass,
+            'singularLabel'
+        ) ? $this->resourceClass::singularLabel() : Str::singular($this->name);
+        $this->pluralLabel = method_exists($this->resourceClass, 'label') ? $this->resourceClass::label(
+        ) : Str::singular($this->name);
         $this->keyName = (new $this->resourceClass::$model)->getKeyName();
         $this->viaResource = app(NovaRequest::class)->route('resource');
         $this->returnContext = $this;
 
+        ray([
+                '$this->resourceClass' => $this->resourceClass,
+                '$this->resourceName' => $this->resourceName,
+                '$this->viaRelationship' => $this->viaRelationship,
+                '$this->singularLabel' => $this->singularLabel,
+                '$this->pluralLabel' => $this->pluralLabel,
+                '$this->keyName' => $this->keyName,
+                '$this->viaResource' => $this->viaResource,
+                '$this->returnContext' => $this->returnContext,
+            ])->blue();
+
         // Nova ^3.3.x need this to fix cannot add relation on create mode
-        if(get_class(app(NovaRequest::class)) !== "Laravel\Nova\Http\Requests\GlobalSearchRequest")
+        if (get_class(app(NovaRequest::class)) !== "Laravel\Nova\Http\Requests\GlobalSearchRequest") {
             $this->resolve(app(NovaRequest::class)->model());
+        }
     }
 
     /**
@@ -214,11 +230,16 @@ class NestedForm extends Field implements RelatableField
      */
     public function resolve($resource, $attribute = null)
     {
+        ray('resolve')->blue();
+        ray($this->children($resource))->blue();
+        ray($this->schema($resource))->blue();
+        ray($resource->{$resource->getKeyName()})->blue();
+
         $this->withMeta([
-            'children' => $this->children($resource),
-            'schema' => $this->schema($resource),
-            'viaResourceId' => $resource->{$resource->getKeyName()},
-        ]);
+                            'children' => $this->children($resource),
+                            'schema' => $this->schema($resource),
+                            'viaResourceId' => $resource->{$resource->getKeyName()},
+                        ]);
     }
 
     /**
@@ -227,7 +248,11 @@ class NestedForm extends Field implements RelatableField
     public function schema($resource)
     {
         if (method_exists($resource, $this->viaRelationship)) {
-            return NestedFormSchema::make($resource->{$this->viaRelationship}()->getModel(), static::wrapIndex(), $this);
+            return NestedFormSchema::make(
+                $resource->{$this->viaRelationship}()->getModel(),
+                static::wrapIndex(),
+                $this
+            );
         }
         return false;
     }
@@ -318,13 +343,15 @@ class NestedForm extends Field implements RelatableField
     public function displayIf(\Closure $displayIfCallback)
     {
         $this->displayIfCallback = function () use ($displayIfCallback) {
-            return collect(call_user_func($displayIfCallback, $this, app(Novarequest::class)))->map(function ($condition) {
-                if (isset($condition['attribute'])) {
-                    $condition['attribute'] = static::conditional($condition['attribute']);
-                }
+            return collect(call_user_func($displayIfCallback, $this, app(Novarequest::class)))->map(
+                function ($condition) {
+                    if (isset($condition['attribute'])) {
+                        $condition['attribute'] = static::conditional($condition['attribute']);
+                    }
 
-                return $condition;
-            });
+                    return $condition;
+                }
+            );
         };
 
         return $this->returnContext;
@@ -335,7 +362,9 @@ class NestedForm extends Field implements RelatableField
      */
     protected function getRelationshipType()
     {
-        return (new \ReflectionClass(Nova::modelInstanceForKey($this->viaResource)->{$this->viaRelationship}()))->getShortName();
+        return (new \ReflectionClass(
+            Nova::modelInstanceForKey($this->viaResource)->{$this->viaRelationship}()
+        ))->getShortName();
     }
 
     /**
@@ -364,7 +393,13 @@ class NestedForm extends Field implements RelatableField
             $children = collect($newRequest->get($requestAttribute));
             $newRequest->route()->setParameter('resource', $this->resourceName);
             $this->deleteChildren($newRequest, $model, $children);
-            $this->createOrUpdateChildren($newRequest, $model, $children, $requestAttribute, $this->getRelatedKeys($newRequest));
+            $this->createOrUpdateChildren(
+                $newRequest,
+                $model,
+                $children,
+                $requestAttribute,
+                $this->getRelatedKeys($newRequest)
+            );
         } else {
             $model::saved(function ($model) use ($request, $requestAttribute, $attribute) {
                 $this->fillAttributeFromRequest($request, $requestAttribute, $model, $attribute);
@@ -379,8 +414,10 @@ class NestedForm extends Field implements RelatableField
     {
         if ($field instanceof BelongsTo || $field instanceof BelongsToMany) {
             return $field->resourceName === $this->viaResource;
-        } else if ($field instanceof MorphTo) {
-            return collect($field->morphToTypes)->pluck('value')->contains($this->viaResource);
+        } else {
+            if ($field instanceof MorphTo) {
+                return collect($field->morphToTypes)->pluck('value')->contains($this->viaResource);
+            }
         }
 
         return false;
@@ -396,7 +433,11 @@ class NestedForm extends Field implements RelatableField
         });
 
         if (!$field) {
-            throw new \Exception(__('A field defining the inverse relationship needs to be set on your related resource (e.g. MorphTo, BelongsTo, BelongsToMany...)'));
+            throw new \Exception(
+                __(
+                    'A field defining the inverse relationship needs to be set on your related resource (e.g. MorphTo, BelongsTo, BelongsToMany...)'
+                )
+            );
         }
 
         if ($field instanceof MorphTo) {
@@ -467,7 +508,9 @@ class NestedForm extends Field implements RelatableField
      */
     protected function createChild(NovaRequest $request, $model, $child, $index, $requestAttribute, $relatedKeys)
     {
-        return (new ResourceStoreController)->__invoke($this->getCreateRequest($request, $model, $child, $index, $requestAttribute, $relatedKeys));
+        return (new ResourceStoreController)->__invoke(
+            $this->getCreateRequest($request, $model, $child, $index, $requestAttribute, $relatedKeys)
+        );
     }
 
     /**
@@ -475,7 +518,9 @@ class NestedForm extends Field implements RelatableField
      */
     protected function updateChild(NovaRequest $request, $model, $child, $index, $requestAttribute, $relatedKeys)
     {
-        return (new ResourceUpdateController)->__invoke($this->getUpdateRequest($request, $model, $child, $index, $requestAttribute, $relatedKeys));
+        return (new ResourceUpdateController)->__invoke(
+            $this->getUpdateRequest($request, $model, $child, $index, $requestAttribute, $relatedKeys)
+        );
     }
 
     /**
@@ -483,12 +528,19 @@ class NestedForm extends Field implements RelatableField
      */
     protected function getDetachRequest(NovaRequest $request, $model, $children)
     {
-        return DetachResourceRequest::createFrom($request->replace([
-            'viaResource' => $this->viaResource,
-            'viaResourceId' => $model->getKey(),
-            'viaRelationship' => $this->viaRelationship,
-            'resources' => $model->{$this->viaRelationship}()->select($this->attribute . '.' . $this->keyName)->whereNotIn($this->attribute . '.' . $this->keyName, $children->pluck($this->keyName))->pluck($this->keyName)
-        ]));
+        return DetachResourceRequest::createFrom(
+            $request->replace([
+                                  'viaResource' => $this->viaResource,
+                                  'viaResourceId' => $model->getKey(),
+                                  'viaRelationship' => $this->viaRelationship,
+                                  'resources' => $model->{$this->viaRelationship}()->select(
+                                      $this->attribute . '.' . $this->keyName
+                                  )->whereNotIn(
+                                      $this->attribute . '.' . $this->keyName,
+                                      $children->pluck($this->keyName)
+                                  )->pluck($this->keyName)
+                              ])
+        );
     }
 
     /**
@@ -496,12 +548,19 @@ class NestedForm extends Field implements RelatableField
      */
     protected function getDeleteRequest(NovaRequest $request, $model, $children)
     {
-        return DeleteResourceRequest::createFrom($request->replace([
-            'viaResource' => null,
-            'viaResourceId' => null,
-            'viaRelationship' => null,
-            'resources' => $model->{$this->viaRelationship}()->whereNotIn($this->keyName, $children->pluck($this->keyName))->pluck($this->keyName)
-        ]));
+        return DeleteResourceRequest::createFrom(
+            $request->replace([
+                                  'viaResource' => null,
+                                  'viaResourceId' => null,
+                                  'viaRelationship' => null,
+                                  'resources' => $model->{$this->viaRelationship}()->whereNotIn(
+                                      $this->keyName,
+                                      $children->pluck(
+                                          $this->keyName
+                                      )
+                                  )->pluck($this->keyName)
+                              ])
+        );
     }
 
     /**
@@ -509,13 +568,17 @@ class NestedForm extends Field implements RelatableField
      */
     protected function getCreateRequest(NovaRequest $request, $model, $child, $index, $requestAttribute, $relatedKeys)
     {
-        $createRequest = CreateResourceRequest::createFrom($request->replace([
-            'viaResource' => $this->viaResource,
-            'viaResourceId' => $model->getKey(),
-            'viaRelationship' => $this->viaRelationship
-        ])->merge($child)->merge(collect($relatedKeys)->map(function ($value) use ($model) {
-            return $value === self::ID ? $model->getKey() : $value;
-        })->toArray()));
+        $createRequest = CreateResourceRequest::createFrom(
+            $request->replace([
+                                  'viaResource' => $this->viaResource,
+                                  'viaResourceId' => $model->getKey(),
+                                  'viaRelationship' => $this->viaRelationship
+                              ])->merge($child)->merge(
+                collect($relatedKeys)->map(function ($value) use ($model) {
+                    return $value === self::ID ? $model->getKey() : $value;
+                })->toArray()
+            )
+        );
 
         $createRequest->files = collect($request->file($requestAttribute . '.' . $index));
 
@@ -527,9 +590,11 @@ class NestedForm extends Field implements RelatableField
      */
     protected function getUpdateRequest(NovaRequest $request, $model, $child, $index, $requestAttribute, $relatedKeys)
     {
-        return UpdateResourceRequest::createFrom($this->getCreateRequest($request, $model, $child, $index, $requestAttribute, $relatedKeys)->merge([
-            'resourceId' => $child[$this->keyName]
-        ]));
+        return UpdateResourceRequest::createFrom(
+            $this->getCreateRequest($request, $model, $child, $index, $requestAttribute, $relatedKeys)->merge([
+                                                                                                                  'resourceId' => $child[$this->keyName]
+                                                                                                              ])
+        );
     }
 
     /**
@@ -576,7 +641,15 @@ class NestedForm extends Field implements RelatableField
      */
     public static function conditional(string $attribute)
     {
-        return preg_replace('/\.(.*?)(?=\.|$)/', '\[$1\]', preg_replace('/\.\$\./', '.' . static::wrapIndex() . '.', preg_replace('/\.\*\./', '\.[0-9]+\.', $attribute)));
+        return preg_replace(
+            '/\.(.*?)(?=\.|$)/',
+            '\[$1\]',
+            preg_replace(
+                '/\.\$\./',
+                '.' . static::wrapIndex() . '.',
+                preg_replace('/\.\*\./', '\.[0-9]+\.', $attribute)
+            )
+        );
     }
 
     /**
@@ -594,6 +667,22 @@ class NestedForm extends Field implements RelatableField
      */
     public function jsonSerialize(): array
     {
+        ray('jsonSerialize()')->blue();
+        ray([
+                'singularLabel' => $this->singularLabel,
+                'pluralLabel' => $this->pluralLabel,
+                'indexKey' => static::wrapIndex(),
+                'wrapLeft' => self::WRAP_LEFT,
+                'wrapRight' => self::WRAP_RIGHT,
+                'resourceName' => $this->resourceName,
+                'viaRelationship' => $this->viaRelationship,
+                'viaResource' => $this->viaResource,
+                'keyName' => $this->keyName,
+                'min' => $this->min,
+                'max' => $this->isManyRelationsip() ? $this->max : 1,
+                'displayIf' => isset($this->displayIfCallback) ? call_user_func($this->displayIfCallback) : null
+            ])->blue();
+
         return array_merge(
             parent::jsonSerialize(),
             [
@@ -615,11 +704,19 @@ class NestedForm extends Field implements RelatableField
 
     public function relationshipName()
     {
-        // TODO: Implement relationshipName() method.
+        ray([
+                'relationshipName' => $this->viaRelationship
+            ])->blue();
+
+        return $this->viaRelationship;
     }
 
     public function relationshipType()
     {
-        // TODO: Implement relationshipType() method.
+        ray([
+                'relationshipType' => $this->getRelationshipType()
+            ])->blue();
+
+        return $this->getRelationshipType();
     }
 }
