@@ -7,7 +7,7 @@
         : 'nova-nested-form-without-content'
     "
   >
-    <help-text    
+    <help-text
       class="error-text mt-2 text-danger p-4"
       v-if="hasError"
     >
@@ -116,6 +116,9 @@ export default {
      * Fill the given FormData object with the field's internal value.
      */
     fill(formData) {
+      console.log('fill');
+      console.log(formData);
+
       if (!this.shouldDisplay()) {
         return;
       }
@@ -217,11 +220,19 @@ export default {
         instance.fieldAttribute &&
         typeof this.conditions[instance.fieldAttribute] === "undefined"
       ) {
+        console.log('setAllWatchers');
+
         this.field.displayIf
-          .filter((field) =>
+          .filter((field) => {
+            console.log('filter field');
+            console.log(field);
+
             instance.fieldAttribute.match(`^${field.attribute}$`)
-          )
+          })
           .forEach((field) => {
+            console.log('forEach field');
+            console.log(field);
+
             const keyToWatch = instance.selectedResourceId
               ? "selectedResourceId"
               : "value";
@@ -266,7 +277,11 @@ export default {
   },
 
   mounted() {
+    console.log('mounted');
+    console.log(this.field);
+
     if (this.field.displayIf) {
+      console.log('displayIf true');
       this.setConditions();
     }
 
