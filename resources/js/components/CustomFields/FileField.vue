@@ -1,5 +1,5 @@
 <script>
-import FileField from '@/components/Form/FileField.vue'
+import FileField from '@/fields/Form/FileField'
 import { Errors } from 'laravel-nova'
 
 export default {
