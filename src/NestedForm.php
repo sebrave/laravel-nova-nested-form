@@ -183,6 +183,9 @@ class NestedForm extends Field implements RelatableField
      */
     public function __construct(string $name, $attribute = null, $resource = null)
     {
+        ray($name)->blue();
+        ray($attribute)->blue();
+        ray($resource)->blue();
 
         parent::__construct($name, $attribute);
         $resource = $resource ?? ResourceRelationshipGuesser::guessResource($name);
