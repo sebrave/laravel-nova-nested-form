@@ -609,4 +609,14 @@ class NestedForm extends Field implements RelatableField
             ]
         );
     }
+
+    public function relationshipName()
+    {
+        // TODO: Implement relationshipName() method.
+    }
+
+    public function relationshipType()
+    {
+        // TODO: Implement relationshipType() method.
+    }
 }
