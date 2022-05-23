@@ -4,12 +4,13 @@
     hover-color="danger"
     v-if="field.children.length > field.min"
   >
-    <icon class="cursor-pointer" type="delete" viewBox="0 0 20 20" />
+    <Icon icon="ic:baseline-remove" class="cursor-pointer" type="delete" viewBox="0 0 20 20" />
   </nested-form-icon>
 </template>
 
 <script>
 import NestedFormIcon from "./NestedFormIcon";
+import { Icon } from '@iconify/vue';
 
 export default {
   components: { NestedFormIcon },
