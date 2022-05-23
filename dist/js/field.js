@@ -5158,8 +5158,14 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     } // Mutate the validation key to fix error not showing bug
 
 
+    console.log('this.field.children');
+    console.log(this.field.children);
     this.field.children.forEach(function (child) {
       child.fields.forEach(function (field) {
+        console.log('inner: field');
+        console.log(field);
+        console.log('inner: field.attribute');
+        console.log(field.attribute);
         field.validationKey = field.attribute;
       });
     });
