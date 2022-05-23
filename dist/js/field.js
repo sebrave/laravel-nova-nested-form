@@ -5276,7 +5276,8 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    NestedFormIcon: _NestedFormIcon__WEBPACK_IMPORTED_MODULE_0__["default"]
+    NestedFormIcon: _NestedFormIcon__WEBPACK_IMPORTED_MODULE_0__["default"],
+    Icon: _iconify_vue__WEBPACK_IMPORTED_MODULE_1__.Icon
   },
   props: {
     field: {
@@ -5317,7 +5318,8 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    NestedFormIcon: _NestedFormIcon__WEBPACK_IMPORTED_MODULE_0__["default"]
+    NestedFormIcon: _NestedFormIcon__WEBPACK_IMPORTED_MODULE_0__["default"],
+    Icon: _iconify_vue__WEBPACK_IMPORTED_MODULE_1__.Icon
   },
   props: {
     field: {
