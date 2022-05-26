@@ -116,8 +116,6 @@ export default {
      * Fill the given FormData object with the field's internal value.
      */
     fill(formData) {
-      console.log('fill');
-      console.log(formData);
 
       if (!this.shouldDisplay()) {
         return;
@@ -220,18 +218,13 @@ export default {
         instance.fieldAttribute &&
         typeof this.conditions[instance.fieldAttribute] === "undefined"
       ) {
-        console.log('setAllWatchers');
 
         this.field.displayIf
           .filter((field) => {
-            console.log('filter field');
-            console.log(field);
 
             instance.fieldAttribute.match(`^${field.attribute}$`)
           })
           .forEach((field) => {
-            console.log('forEach field');
-            console.log(field);
 
             const keyToWatch = instance.selectedResourceId
               ? "selectedResourceId"
@@ -277,23 +270,14 @@ export default {
   },
 
   mounted() {
-    console.log('mounted');
-    console.log(this.field);
 
     if (this.field.displayIf) {
-      console.log('displayIf true');
       this.setConditions();
     }
 
     // Mutate the validation key to fix error not showing bug
-    console.log('this.field.children');
-    console.log(this.field.children);
     this.field.children.forEach((child) => {
       child.fields.forEach((field) => {
-        console.log('inner: field');
-        console.log(field);
-        console.log('inner: field.attribute');
-        console.log(field.attribute);
         field.validationKey = field.attribute;
       });
     });

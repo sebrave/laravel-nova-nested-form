@@ -4967,9 +4967,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     fill: function fill(formData) {
       var _this = this;
 
-      console.log('fill');
-      console.log(formData);
-
       if (!this.shouldDisplay()) {
         return;
       }
@@ -5109,14 +5106,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       var _this3 = this;
 
       if (instance.fieldAttribute && typeof this.conditions[instance.fieldAttribute] === "undefined") {
-        console.log('setAllWatchers');
         this.field.displayIf.filter(function (field) {
-          console.log('filter field');
-          console.log(field);
           instance.fieldAttribute.match("^".concat(field.attribute, "$"));
         }).forEach(function (field) {
-          console.log('forEach field');
-          console.log(field);
           var keyToWatch = instance.selectedResourceId ? "selectedResourceId" : "value";
 
           _this3.$set(_this3.conditions, instance.fieldAttribute, instance[keyToWatch]);
@@ -5152,23 +5144,13 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     }
   },
   mounted: function mounted() {
-    console.log('mounted');
-    console.log(this.field);
-
     if (this.field.displayIf) {
-      console.log('displayIf true');
       this.setConditions();
     } // Mutate the validation key to fix error not showing bug
 
 
-    console.log('this.field.children');
-    console.log(this.field.children);
     this.field.children.forEach(function (child) {
       child.fields.forEach(function (field) {
-        console.log('inner: field');
-        console.log(field);
-        console.log('inner: field.attribute');
-        console.log(field.attribute);
         field.validationKey = field.attribute;
       });
     });
