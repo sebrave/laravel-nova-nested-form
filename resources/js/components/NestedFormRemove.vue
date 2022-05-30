@@ -13,7 +13,7 @@ import NestedFormIcon from "./NestedFormIcon";
 import { Icon } from '@iconify/vue';
 
 export default {
-  components: { NestedFormIcon, Icon },
+  components: { NestedFormIcon },
 
   props: {
     field: {
