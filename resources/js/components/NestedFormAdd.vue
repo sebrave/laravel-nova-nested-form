@@ -4,16 +4,15 @@
     hover-color="success"
     v-if="field.max === 0 || field.children.length < field.max"
   >
-    <Icon icon="mdi-light:home" class="cursor-pointer" type="add" viewBox="1.5 2 20 20" />
+    <icon class="cursor-pointer" type="add" viewBox="1.5 2 20 20" />
   </nested-form-icon>
 </template>
 
 <script>
 import NestedFormIcon from "./NestedFormIcon";
-import { Icon } from '@iconify/vue';
 
 export default {
-  components: { NestedFormIcon, Icon },
+  components: { NestedFormIcon },
 
   props: {
     field: {

@@ -14,7 +14,6 @@
     "production": "mix --production"
   },
   "devDependencies": {
-    "@iconify/vue": "^3.2.1",
     "@inertiajs/inertia": "^0.11.0",
     "@vue/babel-plugin-jsx": "^1.1.1",
     "acorn": "^8.0.4",
