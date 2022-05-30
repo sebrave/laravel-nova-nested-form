@@ -1,5 +1,5 @@
 <template>
-  <p>Nested form field...</p>
+  <p>Empty component</p>
 <!--  <div-->
 <!--    class="relative"-->
 <!--    v-bind:class="-->
@@ -108,204 +108,204 @@ export default {
       type: Number,
     },
   },
-  methods: {
-    getStyle(index) {
-      console.table({
-        fn: 'getStyle',
-        index: index
-      });
-      return index ? { borderRadius: 0 } : {};
-    },
+  // methods: {
+    // getStyle(index) {
+    //   console.table({
+    //     fn: 'getStyle',
+    //     index: index
+    //   });
+    //   return index ? { borderRadius: 0 } : {};
+    // },
+    //
+    // /**
+    //  * Fill the given FormData object with the field's internal value.
+    //  */
+    // fill(formData) {
+    //   console.table({
+    //     fn: 'fill',
+    //     formData: formData
+    //   });
+    //   if (!this.shouldDisplay()) {
+    //     return;
+    //   }
+    //   this.field.children.forEach((child) => {
+    //     if (child[this.field.keyName]) {
+    //       formData.append(
+    //         `${child.attribute}[${this.field.keyName}]`,
+    //         child[this.field.keyName]
+    //       );
+    //     }
+    //     child.fields.forEach((field) => {
+    //       field.fill(formData);
+    //     });
+    //   });
+    //
+    //   const regex = /(.*?(?:\[.*?\])+)(\[.*?)\]((?!\[).+)$/;
+    //
+    //   for (const [key, value] of formData.entries()) {
+    //     if (key.match(regex)) {
+    //       formData.append(key.replace(regex, "$1$2$3]"), value);
+    //       formData.delete(key);
+    //     }
+    //   }
+    // },
+    //
+    // /**
+    //  * Update the field's internal value.
+    //  */
+    // handleChange(value) {
+    //   console.table({
+    //     fn: 'handleChange',
+    //     value: value
+    //   });
+    //   this.value = value;
+    // },
+    //
+    // /**
+    //  * Whether the current form should be displayed.
+    //  */
+    // shouldDisplay() {
+    //   console.table({
+    //     fn: 'shouldDisplay'
+    //   });
+    //   if (!this.field.displayIf) {
+    //     return true;
+    //   }
+    //
+    //   let shouldDisplay = [];
+    //
+    //   for (let i in this.field.displayIf) {
+    //     const {
+    //       attribute,
+    //       is,
+    //       isNot,
+    //       isNull,
+    //       isNotNull,
+    //       isMoreThan,
+    //       isLessThan,
+    //       isMoreThanOrEqual,
+    //       isLessThanOrEqual,
+    //       includes,
+    //       booleanGroup,
+    //     } = this.field.displayIf[i];
+    //
+    //     if (attribute) {
+    //       const values = Object.keys(this.conditions)
+    //         .filter((key) => key.match(`^${attribute}$`))
+    //         .map((key) => this.conditions[key]);
+    //
+    //       if (typeof is !== "undefined") {
+    //         shouldDisplay.push(values.every((v) => v === is));
+    //       } else if (typeof isNot !== "undefined") {
+    //         shouldDisplay.push(values.every((v) => v !== isNot));
+    //       } else if (isNotNull) {
+    //         shouldDisplay.push(values.every((v) => Boolean(v)));
+    //       } else if (isNull) {
+    //         shouldDisplay.push(values.every((v) => !Boolean(v)));
+    //       } else if (typeof isMoreThan !== "undefined") {
+    //         shouldDisplay.push(values.every((v) => v > isMoreThan));
+    //       } else if (typeof isLessThan !== "undefined") {
+    //         shouldDisplay.push(values.every((v) => v < isLessThan));
+    //       } else if (typeof isMoreThanOrEqual !== "undefined") {
+    //         shouldDisplay.push(values.every((v) => v >= isMoreThanOrEqual));
+    //       } else if (typeof isLessThanOrEqual !== "undefined") {
+    //         shouldDisplay.push(values.every((v) => v <= isLessThanOrEqual));
+    //       } else if (includes) {
+    //         shouldDisplay.push(values.every((v) => v && includes.includes(v)));
+    //       } else if (typeof booleanGroup !== "undefined") {
+    //         shouldDisplay.push(values.every((o) => {
+    //             let oo = JSON.parse(JSON.stringify(o)).filter((x) => {
+    //                 return x.name === booleanGroup;
+    //             });
+    //             return oo && oo[0] && oo[0].checked;
+    //         }));
+    //       }
+    //     }
+    //   }
+    //
+    //   return shouldDisplay.every((should) => should);
+    // },
+    // /**
+    //  * Get all the fields of the instance.
+    //  */
+    // setAllAttributeWatchers(instance) {
+    //   console.table({
+    //     fn: 'setAllAttributeWatchers',
+    //     instance: instance
+    //   });
+    //   if (
+    //     instance.fieldAttribute &&
+    //     typeof this.conditions[instance.fieldAttribute] === "undefined"
+    //   ) {
+    //     this.field.displayIf
+    //       .filter((field) =>
+    //         instance.fieldAttribute.match(`^${field.attribute}$`)
+    //       )
+    //       .forEach((field) => {
+    //         const keyToWatch = instance.selectedResourceId
+    //           ? "selectedResourceId"
+    //           : "value";
+    //
+    //         this.$set(
+    //           this.conditions,
+    //           instance.fieldAttribute,
+    //           instance[keyToWatch]
+    //         );
+    //
+    //         instance.$watch(keyToWatch, (keyToWatch) => {
+    //           this.$set(this.conditions, instance.fieldAttribute, keyToWatch);
+    //         });
+    //       });
+    //   }
+    //
+    //   if (instance.$children) {
+    //     instance.$children.map((child) => this.setAllAttributeWatchers(child));
+    //   }
+    // },
+    //
+    // /**
+    //  * Get component name.
+    //  */
+    // getComponentName(child) {
+    //   console.table({
+    //     fn: 'getComponentName',
+    //     child: child
+    //   });
+    //   return child.prefixComponent
+    //     ? `form-${child.component}`
+    //     : child.component;
+    // },
+    //
+    // setConditions() {
+    //   console.table({
+    //     fn: 'setConditions'
+    //   });
+    //   if (this.field.displayIf) {
+    //     this.setAllAttributeWatchers(this.$root);
+    //   }
+    // },
+  // },
 
-    /**
-     * Fill the given FormData object with the field's internal value.
-     */
-    fill(formData) {
-      console.table({
-        fn: 'fill',
-        formData: formData
-      });
-      if (!this.shouldDisplay()) {
-        return;
-      }
-      this.field.children.forEach((child) => {
-        if (child[this.field.keyName]) {
-          formData.append(
-            `${child.attribute}[${this.field.keyName}]`,
-            child[this.field.keyName]
-          );
-        }
-        child.fields.forEach((field) => {
-          field.fill(formData);
-        });
-      });
+  // watch: {
+  //   "field.children"() {
+  //     this.setConditions();
+  //   },
+  // },
 
-      const regex = /(.*?(?:\[.*?\])+)(\[.*?)\]((?!\[).+)$/;
-
-      for (const [key, value] of formData.entries()) {
-        if (key.match(regex)) {
-          formData.append(key.replace(regex, "$1$2$3]"), value);
-          formData.delete(key);
-        }
-      }
-    },
-
-    /**
-     * Update the field's internal value.
-     */
-    handleChange(value) {
-      console.table({
-        fn: 'handleChange',
-        value: value
-      });
-      this.value = value;
-    },
-
-    /**
-     * Whether the current form should be displayed.
-     */
-    shouldDisplay() {
-      console.table({
-        fn: 'shouldDisplay'
-      });
-      if (!this.field.displayIf) {
-        return true;
-      }
-
-      let shouldDisplay = [];
-
-      for (let i in this.field.displayIf) {
-        const {
-          attribute,
-          is,
-          isNot,
-          isNull,
-          isNotNull,
-          isMoreThan,
-          isLessThan,
-          isMoreThanOrEqual,
-          isLessThanOrEqual,
-          includes,
-          booleanGroup,
-        } = this.field.displayIf[i];
-
-        if (attribute) {
-          const values = Object.keys(this.conditions)
-            .filter((key) => key.match(`^${attribute}$`))
-            .map((key) => this.conditions[key]);
-
-          if (typeof is !== "undefined") {
-            shouldDisplay.push(values.every((v) => v === is));
-          } else if (typeof isNot !== "undefined") {
-            shouldDisplay.push(values.every((v) => v !== isNot));
-          } else if (isNotNull) {
-            shouldDisplay.push(values.every((v) => Boolean(v)));
-          } else if (isNull) {
-            shouldDisplay.push(values.every((v) => !Boolean(v)));
-          } else if (typeof isMoreThan !== "undefined") {
-            shouldDisplay.push(values.every((v) => v > isMoreThan));
-          } else if (typeof isLessThan !== "undefined") {
-            shouldDisplay.push(values.every((v) => v < isLessThan));
-          } else if (typeof isMoreThanOrEqual !== "undefined") {
-            shouldDisplay.push(values.every((v) => v >= isMoreThanOrEqual));
-          } else if (typeof isLessThanOrEqual !== "undefined") {
-            shouldDisplay.push(values.every((v) => v <= isLessThanOrEqual));
-          } else if (includes) {
-            shouldDisplay.push(values.every((v) => v && includes.includes(v)));
-          } else if (typeof booleanGroup !== "undefined") {
-            shouldDisplay.push(values.every((o) => {
-                let oo = JSON.parse(JSON.stringify(o)).filter((x) => {
-                    return x.name === booleanGroup;
-                });
-                return oo && oo[0] && oo[0].checked;
-            }));
-          }
-        }
-      }
-
-      return shouldDisplay.every((should) => should);
-    },
-    /**
-     * Get all the fields of the instance.
-     */
-    setAllAttributeWatchers(instance) {
-      console.table({
-        fn: 'setAllAttributeWatchers',
-        instance: instance
-      });
-      if (
-        instance.fieldAttribute &&
-        typeof this.conditions[instance.fieldAttribute] === "undefined"
-      ) {
-        this.field.displayIf
-          .filter((field) =>
-            instance.fieldAttribute.match(`^${field.attribute}$`)
-          )
-          .forEach((field) => {
-            const keyToWatch = instance.selectedResourceId
-              ? "selectedResourceId"
-              : "value";
-
-            this.$set(
-              this.conditions,
-              instance.fieldAttribute,
-              instance[keyToWatch]
-            );
-
-            instance.$watch(keyToWatch, (keyToWatch) => {
-              this.$set(this.conditions, instance.fieldAttribute, keyToWatch);
-            });
-          });
-      }
-
-      if (instance.$children) {
-        instance.$children.map((child) => this.setAllAttributeWatchers(child));
-      }
-    },
-
-    /**
-     * Get component name.
-     */
-    getComponentName(child) {
-      console.table({
-        fn: 'getComponentName',
-        child: child
-      });
-      return child.prefixComponent
-        ? `form-${child.component}`
-        : child.component;
-    },
-
-    setConditions() {
-      console.table({
-        fn: 'setConditions'
-      });
-      if (this.field.displayIf) {
-        this.setAllAttributeWatchers(this.$root);
-      }
-    },
-  },
-
-  watch: {
-    "field.children"() {
-      this.setConditions();
-    },
-  },
-
-  mounted() {
-    console.table({
-      fn: 'mounted'
-    });
-    if (this.field.displayIf) {
-      this.setConditions();
-    }
-
-    // Mutate the validation key to fix error not showing bug
-    this.field.children.forEach((child) => {
-      child.fields.forEach((field) => {
-        field.validationKey = field.attribute;
-      });
-    });
-  },
+  // mounted() {
+  //   console.table({
+  //     fn: 'mounted'
+  //   });
+  //   if (this.field.displayIf) {
+  //     this.setConditions();
+  //   }
+  //
+  //   // Mutate the validation key to fix error not showing bug
+  //   this.field.children.forEach((child) => {
+  //     child.fields.forEach((field) => {
+  //       field.validationKey = field.attribute;
+  //     });
+  //   });
+  // },
 };
 </script>
