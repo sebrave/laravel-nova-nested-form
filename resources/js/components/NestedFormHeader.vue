@@ -41,7 +41,7 @@ export default {
             if ((this.field.max - this.field.min) <= 1) {
                 return this.child.heading.replace(/\d+\. /, '');
             }
-        } 
+        }
 
       return this.child.heading
         ? this.child.heading.replace(

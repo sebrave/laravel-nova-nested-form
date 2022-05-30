@@ -5375,9 +5375,109 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "vue");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 
+var _hoisted_1 = {
+  key: 1,
+  "class": "flex flex-col p-8 items-center justify-center"
+};
+var _hoisted_2 = {
+  "class": "text-center my-4 font-bold text-80 text-xl"
+};
+var _hoisted_3 = {
+  key: 2,
+  "class": "flex flex-col p-8 items-center justify-center"
+};
+var _hoisted_4 = {
+  "class": "text-center my-4 font-bold text-80 text-xl"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("  <div"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("    class=\"relative\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("    v-bind:class=\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      shouldDisplay()"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        ? 'nova-nested-form-with-content'"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        : 'nova-nested-form-without-content'"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("    \""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("  >"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("    <help-text"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      class=\"error-text mt-2 text-danger p-4\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      v-if=\"hasError\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("    >"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      {{ firstError }}"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("    </help-text>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("    <template v-if=\"shouldDisplay()\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      <template v-if=\"field.children && field.children.length > 0\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        <card"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("          :class=\"{ 'overflow-hidden': field.panel && !index, blah: true }\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("          :key=\"child.id || child.key\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("          v-for=\"(child, childIndex) in field.children\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("          v-bind:style=\"getStyle(childIndex)\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        >"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("          <nested-form-header"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("            :child=\"child\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("            :field=\"field\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("          />"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("          <component"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("            :conditions=\"conditions\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("            :errors=\"errors\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("            :field=\"childField\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("            :index=\"childIndex\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("            :is=\"getComponentName(childField)\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("            :key=\"childFieldIndex\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("            :parent-index=\"index\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("            :resource-id=\"child.resourceId\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("            :resource-name=\"field.resourceName\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("            :via-resource=\"field.viaResource\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("            :via-resource-id=\"field.viaResourceId\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("            @file-deleted=\"$emit('file-deleted')\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("            v-for=\"(childField, childFieldIndex) in child.fields\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("            v-show=\"child.opened\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("            :show-help-text=\"childField.helpText != null\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("          />"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        </card>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      </template>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      <div class=\"flex flex-col p-8 items-center justify-center\" v-else>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        <p class=\"text-center my-4 font-bold text-80 text-xl\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("          {{"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("            __(\"No related :pluralLabel yet.\", {"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("              pluralLabel: field.pluralLabel,"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("            })"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("          }}"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        </p>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        <nested-form-add :field=\"field\" />"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      </div>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("    </template>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("    <div class=\"flex flex-col p-8 items-center justify-center\" v-else>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      <p class=\"text-center my-4 font-bold text-80 text-xl\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        {{"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("          __(\"You cannot add :pluralLabel.\", { pluralLabel: field.pluralLabel })"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        }}"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      </p>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("    </div>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("  </div>")], 64
+  var _component_help_text = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("help-text");
+
+  var _component_nested_form_header = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("nested-form-header");
+
+  var _component_card = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("card");
+
+  var _component_nested_form_add = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("nested-form-add");
+
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["relative", $options.shouldDisplay() ? 'nova-nested-form-with-content' : 'nova-nested-form-without-content'])
+  }, [_ctx.hasError ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_help_text, {
+    key: 0,
+    "class": "error-text mt-2 text-danger p-4"
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.firstError), 1
+      /* TEXT */
+      )];
+    }),
+    _: 1
+    /* STABLE */
+
+  })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $options.shouldDisplay() ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+    key: 1
+  }, [$props.field.children && $props.field.children.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+    key: 0
+  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.field.children, function (child, childIndex) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_card, {
+      "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)({
+        'overflow-hidden': $props.field.panel && !$props.index,
+        blah: true
+      }),
+      key: child.id || child.key,
+      style: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeStyle)($options.getStyle(childIndex))
+    }, {
+      "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+        return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_nested_form_header, {
+          child: child,
+          field: $props.field
+        }, null, 8
+        /* PROPS */
+        , ["child", "field"]), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(child.fields, function (childField, childFieldIndex) {
+          return (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)(((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)((0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveDynamicComponent)($options.getComponentName(childField)), {
+            conditions: $props.conditions,
+            errors: _ctx.errors,
+            field: childField,
+            index: childIndex,
+            key: childFieldIndex,
+            "parent-index": $props.index,
+            "resource-id": child.resourceId,
+            "resource-name": $props.field.resourceName,
+            "via-resource": $props.field.viaResource,
+            "via-resource-id": $props.field.viaResourceId,
+            onFileDeleted: _cache[0] || (_cache[0] = function ($event) {
+              return _ctx.$emit('file-deleted');
+            }),
+            "show-help-text": childField.helpText != null
+          }, null, 40
+          /* PROPS, HYDRATE_EVENTS */
+          , ["conditions", "errors", "field", "index", "parent-index", "resource-id", "resource-name", "via-resource", "via-resource-id", "show-help-text"])), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, child.opened]]);
+        }), 128
+        /* KEYED_FRAGMENT */
+        ))];
+      }),
+      _: 2
+      /* DYNAMIC */
+
+    }, 1032
+    /* PROPS, DYNAMIC_SLOTS */
+    , ["class", "style"]);
+  }), 128
+  /* KEYED_FRAGMENT */
+  )) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.__("No related :pluralLabel yet.", {
+    pluralLabel: $props.field.pluralLabel
+  })), 1
+  /* TEXT */
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_nested_form_add, {
+    field: $props.field
+  }, null, 8
+  /* PROPS */
+  , ["field"])]))], 64
   /* STABLE_FRAGMENT */
+  )) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.__("You cannot add :pluralLabel.", {
+    pluralLabel: $props.field.pluralLabel
+  })), 1
+  /* TEXT */
+  )]))], 2
+  /* CLASS */
   );
 }
 

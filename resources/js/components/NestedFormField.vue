@@ -1,72 +1,72 @@
 <template>
-<!--  <div-->
-<!--    class="relative"-->
-<!--    v-bind:class="-->
-<!--      shouldDisplay()-->
-<!--        ? 'nova-nested-form-with-content'-->
-<!--        : 'nova-nested-form-without-content'-->
-<!--    "-->
-<!--  >-->
-<!--    <help-text-->
-<!--      class="error-text mt-2 text-danger p-4"-->
-<!--      v-if="hasError"-->
-<!--    >-->
-<!--      {{ firstError }}-->
-<!--    </help-text>-->
+  <div
+    class="relative"
+    v-bind:class="
+      shouldDisplay()
+        ? 'nova-nested-form-with-content'
+        : 'nova-nested-form-without-content'
+    "
+  >
+    <help-text
+      class="error-text mt-2 text-danger p-4"
+      v-if="hasError"
+    >
+      {{ firstError }}
+    </help-text>
 
-<!--    <template v-if="shouldDisplay()">-->
-<!--      <template v-if="field.children && field.children.length > 0">-->
-<!--        <card-->
-<!--          :class="{ 'overflow-hidden': field.panel && !index, blah: true }"-->
-<!--          :key="child.id || child.key"-->
-<!--          v-for="(child, childIndex) in field.children"-->
-<!--          v-bind:style="getStyle(childIndex)"-->
-<!--        >-->
-<!--          <nested-form-header-->
-<!--            :child="child"-->
-<!--            :field="field"-->
-<!--          />-->
+    <template v-if="shouldDisplay()">
+      <template v-if="field.children && field.children.length > 0">
+        <card
+          :class="{ 'overflow-hidden': field.panel && !index, blah: true }"
+          :key="child.id || child.key"
+          v-for="(child, childIndex) in field.children"
+          v-bind:style="getStyle(childIndex)"
+        >
+          <nested-form-header
+            :child="child"
+            :field="field"
+          />
 
-<!--          <component-->
-<!--            :conditions="conditions"-->
-<!--            :errors="errors"-->
-<!--            :field="childField"-->
-<!--            :index="childIndex"-->
-<!--            :is="getComponentName(childField)"-->
-<!--            :key="childFieldIndex"-->
-<!--            :parent-index="index"-->
-<!--            :resource-id="child.resourceId"-->
-<!--            :resource-name="field.resourceName"-->
-<!--            :via-resource="field.viaResource"-->
-<!--            :via-resource-id="field.viaResourceId"-->
-<!--            @file-deleted="$emit('file-deleted')"-->
-<!--            v-for="(childField, childFieldIndex) in child.fields"-->
-<!--            v-show="child.opened"-->
-<!--            :show-help-text="childField.helpText != null"-->
-<!--          />-->
-<!--        </card>-->
-<!--      </template>-->
+          <component
+            :conditions="conditions"
+            :errors="errors"
+            :field="childField"
+            :index="childIndex"
+            :is="getComponentName(childField)"
+            :key="childFieldIndex"
+            :parent-index="index"
+            :resource-id="child.resourceId"
+            :resource-name="field.resourceName"
+            :via-resource="field.viaResource"
+            :via-resource-id="field.viaResourceId"
+            @file-deleted="$emit('file-deleted')"
+            v-for="(childField, childFieldIndex) in child.fields"
+            v-show="child.opened"
+            :show-help-text="childField.helpText != null"
+          />
+        </card>
+      </template>
 
-<!--      <div class="flex flex-col p-8 items-center justify-center" v-else>-->
-<!--        <p class="text-center my-4 font-bold text-80 text-xl">-->
-<!--          {{-->
-<!--            __("No related :pluralLabel yet.", {-->
-<!--              pluralLabel: field.pluralLabel,-->
-<!--            })-->
-<!--          }}-->
-<!--        </p>-->
-<!--        <nested-form-add :field="field" />-->
-<!--      </div>-->
-<!--    </template>-->
+      <div class="flex flex-col p-8 items-center justify-center" v-else>
+        <p class="text-center my-4 font-bold text-80 text-xl">
+          {{
+            __("No related :pluralLabel yet.", {
+              pluralLabel: field.pluralLabel,
+            })
+          }}
+        </p>
+        <nested-form-add :field="field" />
+      </div>
+    </template>
 
-<!--    <div class="flex flex-col p-8 items-center justify-center" v-else>-->
-<!--      <p class="text-center my-4 font-bold text-80 text-xl">-->
-<!--        {{-->
-<!--          __("You cannot add :pluralLabel.", { pluralLabel: field.pluralLabel })-->
-<!--        }}-->
-<!--      </p>-->
-<!--    </div>-->
-<!--  </div>-->
+    <div class="flex flex-col p-8 items-center justify-center" v-else>
+      <p class="text-center my-4 font-bold text-80 text-xl">
+        {{
+          __("You cannot add :pluralLabel.", { pluralLabel: field.pluralLabel })
+        }}
+      </p>
+    </div>
+  </div>
 </template>
 
 <script >
