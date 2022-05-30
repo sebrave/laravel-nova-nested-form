@@ -10,7 +10,7 @@ class NestedFormChild extends NestedFormSchema
 
     /**
      * Name of the fields' fitler method.
-     * 
+     *
      * @var string
      */
     protected static $filterMethod = 'removeNonUpdateFields';
@@ -30,7 +30,7 @@ class NestedFormChild extends NestedFormSchema
      *
      * @return array
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return array_merge(parent::jsonSerialize(), [
             'resourceId' => $this->model->getKey(),
