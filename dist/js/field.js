@@ -5460,8 +5460,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               return _ctx.$emit('file-deleted');
             }),
             "show-help-text": childField.helpText != null
-          }, null, 40
-          /* PROPS, HYDRATE_EVENTS */
+          }, null, 8
+          /* PROPS */
           , ["conditions", "errors", "field", "index", "parent-index", "resource-id", "resource-name", "via-resource", "via-resource-id", "show-help-text"])), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, child.opened]]);
         }), 128
         /* KEYED_FRAGMENT */
@@ -5483,9 +5483,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     field: $props.field
   }, null, 8
   /* PROPS */
+<<<<<<< HEAD
   , ["field"])]))], 64
   /* STABLE_FRAGMENT */
   )) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.__("You cannot add :pluralLabel.", {
+=======
+  , ["field"])]))], 2112
+  /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
+  )) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.__("You cannot add :pluralLabel.", {
+>>>>>>> parent of a5ce409 (Try migration build)
     pluralLabel: $props.field.pluralLabel
   })), 1
   /* TEXT */
