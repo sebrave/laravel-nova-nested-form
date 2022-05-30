@@ -5271,8 +5271,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _NestedFormIcon__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./NestedFormIcon */ "./resources/js/components/NestedFormIcon.vue");
-/* harmony import */ var _iconify_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @iconify/vue */ "./node_modules/@iconify/vue/dist/iconify.mjs");
-
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -5312,8 +5310,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _NestedFormIcon__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./NestedFormIcon */ "./resources/js/components/NestedFormIcon.vue");
-/* harmony import */ var _iconify_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @iconify/vue */ "./node_modules/@iconify/vue/dist/iconify.mjs");
-
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -5371,7 +5367,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Icon, {
-        icon: "ic:baseline-add",
+        icon: "mdi-light:home",
         "class": "cursor-pointer",
         type: "add",
         viewBox: "1.5 2 20 20"
@@ -5619,7 +5615,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  var _component_Icon = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Icon");
+  var _component_icon = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("icon");
 
   var _component_nested_form_icon = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("nested-form-icon");
 
@@ -5629,8 +5625,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "hover-color": "danger"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Icon, {
-        icon: "ic:baseline-remove",
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_icon, {
         "class": "cursor-pointer",
         type: "delete",
         viewBox: "0 0 20 20"
@@ -5661,7 +5656,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  var _component_Icon = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Icon");
+  var _component_icon = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("icon");
 
   var _component_nested_form_icon = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("nested-form-icon");
 
@@ -5670,8 +5665,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "hover-color": "info"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Icon, {
-        icon: "ic:baseline-pageview",
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_icon, {
         "class": "cursor-pointer",
         type: "view",
         viewBox: "1 -1.5 20 20"

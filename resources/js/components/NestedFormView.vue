@@ -1,12 +1,11 @@
 <template>
   <nested-form-icon @click="toggleVisibility" hover-color="info">
-    <Icon icon="ic:baseline-pageview" class="cursor-pointer" type="view" viewBox="1 -1.5 20 20" />
+    <icon class="cursor-pointer" type="view" viewBox="1 -1.5 20 20" />
   </nested-form-icon>
 </template>
 
 <script>
 import NestedFormIcon from "./NestedFormIcon";
-import { Icon } from '@iconify/vue';
 
 export default {
   components: { NestedFormIcon },

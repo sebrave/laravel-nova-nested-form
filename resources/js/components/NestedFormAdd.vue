@@ -4,7 +4,7 @@
     hover-color="success"
     v-if="field.max === 0 || field.children.length < field.max"
   >
-    <Icon icon="ic:baseline-add" class="cursor-pointer" type="add" viewBox="1.5 2 20 20" />
+    <Icon icon="mdi-light:home" class="cursor-pointer" type="add" viewBox="1.5 2 20 20" />
   </nested-form-icon>
 </template>
 
