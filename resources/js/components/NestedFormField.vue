@@ -1,15 +1,15 @@
 <template>
   <div
-    class="relative"
-    v-bind:class="
+      class="relative"
+      v-bind:class="
       shouldDisplay()
         ? 'nova-nested-form-with-content'
         : 'nova-nested-form-without-content'
     "
   >
     <help-text
-      class="error-text mt-2 text-danger p-4"
-      v-if="hasError"
+        class="error-text mt-2 text-danger p-4"
+        v-if="hasError"
     >
       {{ firstError }}
     </help-text>
@@ -17,33 +17,35 @@
     <template v-if="shouldDisplay()">
       <template v-if="field.children && field.children.length > 0">
         <card
-          :class="{ 'overflow-hidden': field.panel && !index, blah: true }"
-          :key="child.id || child.key"
-          v-for="(child, childIndex) in field.children"
-          v-bind:style="getStyle(childIndex)"
+            :class="{ 'overflow-hidden': field.panel && !index, blah: true }"
+            :key="child.id || child.key"
+            v-for="(child, childIndex) in field.children"
+            v-bind:style="getStyle(childIndex)"
         >
           <nested-form-header
-            :child="child"
-            :field="field"
+              :child="child"
+              :field="field"
           />
 
-          <component
-            :conditions="conditions"
-            :errors="errors"
-            :field="childField"
-            :index="childIndex"
-            :is="getComponentName(childField)"
-            :key="childFieldIndex"
-            :parent-index="index"
-            :resource-id="child.resourceId"
-            :resource-name="field.resourceName"
-            :via-resource="field.viaResource"
-            :via-resource-id="field.viaResourceId"
-            @file-deleted="$emit('file-deleted')"
-            v-for="(childField, childFieldIndex) in child.fields"
-            v-show="child.opened"
-            :show-help-text="childField.helpText != null"
-          />
+          <div v-if="child.fields && child.fields.length > 0">
+            <component
+                :conditions="conditions"
+                :errors="errors"
+                :field="childField"
+                :index="childIndex"
+                :is="getComponentName(childField)"
+                :key="childFieldIndex"
+                :parent-index="index"
+                :resource-id="child.resourceId"
+                :resource-name="field.resourceName"
+                :via-resource="field.viaResource"
+                :via-resource-id="field.viaResourceId"
+                @file-deleted="$emit('file-deleted')"
+                v-for="(childField, childFieldIndex) in child.fields"
+                v-show="child.opened"
+                :show-help-text="childField.helpText != null"
+            />
+          </div>
         </card>
       </template>
 
@@ -55,22 +57,22 @@
             })
           }}
         </p>
-        <nested-form-add :field="field" />
+        <nested-form-add :field="field"/>
       </div>
     </template>
 
     <div class="flex flex-col p-8 items-center justify-center" v-else>
       <p class="text-center my-4 font-bold text-80 text-xl">
         {{
-          __("You cannot add :pluralLabel.", { pluralLabel: field.pluralLabel })
+          __("You cannot add :pluralLabel.", {pluralLabel: field.pluralLabel})
         }}
       </p>
     </div>
   </div>
 </template>
 
-<script >
-import { FormField, HandlesValidationErrors } from "laravel-nova";
+<script>
+import {FormField, HandlesValidationErrors} from "laravel-nova";
 import NestedFormAdd from "./NestedFormAdd";
 import NestedFormHeader from "./NestedFormHeader";
 
@@ -109,7 +111,7 @@ export default {
   },
   methods: {
     getStyle(index) {
-      return index ? { borderRadius: 0 } : {};
+      return index ? {borderRadius: 0} : {};
     },
 
     /**
@@ -123,8 +125,8 @@ export default {
       this.field.children.forEach((child) => {
         if (child[this.field.keyName]) {
           formData.append(
-            `${child.attribute}[${this.field.keyName}]`,
-            child[this.field.keyName]
+              `${child.attribute}[${this.field.keyName}]`,
+              child[this.field.keyName]
           );
         }
         child.fields.forEach((field) => {
@@ -176,8 +178,8 @@ export default {
 
         if (attribute) {
           const values = Object.keys(this.conditions)
-            .filter((key) => key.match(`^${attribute}$`))
-            .map((key) => this.conditions[key]);
+              .filter((key) => key.match(`^${attribute}$`))
+              .map((key) => this.conditions[key]);
 
           if (typeof is !== "undefined") {
             shouldDisplay.push(values.every((v) => v === is));
@@ -199,10 +201,10 @@ export default {
             shouldDisplay.push(values.every((v) => v && includes.includes(v)));
           } else if (typeof booleanGroup !== "undefined") {
             shouldDisplay.push(values.every((o) => {
-                let oo = JSON.parse(JSON.stringify(o)).filter((x) => {
-                    return x.name === booleanGroup;
-                });
-                return oo && oo[0] && oo[0].checked;
+              let oo = JSON.parse(JSON.stringify(o)).filter((x) => {
+                return x.name === booleanGroup;
+              });
+              return oo && oo[0] && oo[0].checked;
             }));
           }
         }
@@ -215,31 +217,31 @@ export default {
      */
     setAllAttributeWatchers(instance) {
       if (
-        instance.fieldAttribute &&
-        typeof this.conditions[instance.fieldAttribute] === "undefined"
+          instance.fieldAttribute &&
+          typeof this.conditions[instance.fieldAttribute] === "undefined"
       ) {
 
         this.field.displayIf
-          .filter((field) => {
+            .filter((field) => {
 
-            instance.fieldAttribute.match(`^${field.attribute}$`)
-          })
-          .forEach((field) => {
+              instance.fieldAttribute.match(`^${field.attribute}$`)
+            })
+            .forEach((field) => {
 
-            const keyToWatch = instance.selectedResourceId
-              ? "selectedResourceId"
-              : "value";
+              const keyToWatch = instance.selectedResourceId
+                  ? "selectedResourceId"
+                  : "value";
 
-            this.$set(
-              this.conditions,
-              instance.fieldAttribute,
-              instance[keyToWatch]
-            );
+              this.$set(
+                  this.conditions,
+                  instance.fieldAttribute,
+                  instance[keyToWatch]
+              );
 
-            instance.$watch(keyToWatch, (keyToWatch) => {
-              this.$set(this.conditions, instance.fieldAttribute, keyToWatch);
+              instance.$watch(keyToWatch, (keyToWatch) => {
+                this.$set(this.conditions, instance.fieldAttribute, keyToWatch);
+              });
             });
-          });
       }
 
       if (instance.$children) {
@@ -252,8 +254,8 @@ export default {
      */
     getComponentName(child) {
       return child.prefixComponent
-        ? `form-${child.component}`
-        : child.component;
+          ? `form-${child.component}`
+          : child.component;
     },
 
     setConditions() {
