@@ -10,7 +10,8 @@
   ],
   "license": "MIT",
   "require": {
-    "php": "^8.0"
+    "php": "^8.0",
+    "laravel/nova": "^4.0"
   },
   "repositories": [
     {
@@ -34,8 +35,5 @@
     "sort-packages": true
   },
   "minimum-stability": "dev",
-  "prefer-stable": true,
-  "require-dev": {
-    "laravel/nova": "^4.0"
-  }
+  "prefer-stable": true
 }
