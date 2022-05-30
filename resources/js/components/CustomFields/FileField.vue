@@ -1,9 +1,9 @@
 <script>
-import FileField from '@/components/Form/FileField.vue'
+import FileField from '@/fields/Form/FileField.vue'
 import { Errors } from 'laravel-nova'
 
 export default {
-  mixins: [FileField],
+  extends: [FileField],
   methods: {
     /**
      * Remove the linked file from storage

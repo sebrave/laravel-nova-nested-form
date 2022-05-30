@@ -1,9 +1,9 @@
 <script>
-import BelongsToField from '@/components/Form/BelongsToField.vue'
+import BelongsToField from '@/fields/Form/BelongsToField.vue'
 import storage from '@/storage/BelongsToFieldStorage'
 
 export default {
-  mixins: [BelongsToField],
+  extends: [BelongsToField],
   methods: {
     /**
      * Get the resources that may be related to this resource.
