@@ -4953,6 +4953,10 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   },
   methods: {
     getStyle: function getStyle(index) {
+      console.table({
+        fn: 'getStyle',
+        index: index
+      });
       return index ? {
         borderRadius: 0
       } : {};
@@ -4963,6 +4967,11 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
      */
     fill: function fill(formData) {
       var _this = this;
+
+      console.table({
+        fn: 'fill',
+        formData: formData
+      });
 
       if (!this.shouldDisplay()) {
         return;
@@ -5004,6 +5013,10 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
      * Update the field's internal value.
      */
     handleChange: function handleChange(value) {
+      console.table({
+        fn: 'handleChange',
+        value: value
+      });
       this.value = value;
     },
 
@@ -5012,6 +5025,10 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
      */
     shouldDisplay: function shouldDisplay() {
       var _this2 = this;
+
+      console.table({
+        fn: 'shouldDisplay'
+      });
 
       if (!this.field.displayIf) {
         return true;
@@ -5102,6 +5119,11 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     setAllAttributeWatchers: function setAllAttributeWatchers(instance) {
       var _this3 = this;
 
+      console.table({
+        fn: 'setAllAttributeWatchers',
+        instance: instance
+      });
+
       if (instance.fieldAttribute && typeof this.conditions[instance.fieldAttribute] === "undefined") {
         this.field.displayIf.filter(function (field) {
           return instance.fieldAttribute.match("^".concat(field.attribute, "$"));
@@ -5127,9 +5149,17 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
      * Get component name.
      */
     getComponentName: function getComponentName(child) {
+      console.table({
+        fn: 'getComponentName',
+        child: child
+      });
       return child.prefixComponent ? "form-".concat(child.component) : child.component;
     },
     setConditions: function setConditions() {
+      console.table({
+        fn: 'setConditions'
+      });
+
       if (this.field.displayIf) {
         this.setAllAttributeWatchers(this.$root);
       }
@@ -5141,6 +5171,10 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     }
   },
   mounted: function mounted() {
+    console.table({
+      fn: 'mounted'
+    });
+
     if (this.field.displayIf) {
       this.setConditions();
     } // Mutate the validation key to fix error not showing bug

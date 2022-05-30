@@ -109,6 +109,10 @@ export default {
   },
   methods: {
     getStyle(index) {
+      console.table({
+        fn: 'getStyle',
+        index: index
+      });
       return index ? { borderRadius: 0 } : {};
     },
 
@@ -116,6 +120,10 @@ export default {
      * Fill the given FormData object with the field's internal value.
      */
     fill(formData) {
+      console.table({
+        fn: 'fill',
+        formData: formData
+      });
       if (!this.shouldDisplay()) {
         return;
       }
@@ -145,6 +153,10 @@ export default {
      * Update the field's internal value.
      */
     handleChange(value) {
+      console.table({
+        fn: 'handleChange',
+        value: value
+      });
       this.value = value;
     },
 
@@ -152,6 +164,9 @@ export default {
      * Whether the current form should be displayed.
      */
     shouldDisplay() {
+      console.table({
+        fn: 'shouldDisplay'
+      });
       if (!this.field.displayIf) {
         return true;
       }
@@ -213,6 +228,10 @@ export default {
      * Get all the fields of the instance.
      */
     setAllAttributeWatchers(instance) {
+      console.table({
+        fn: 'setAllAttributeWatchers',
+        instance: instance
+      });
       if (
         instance.fieldAttribute &&
         typeof this.conditions[instance.fieldAttribute] === "undefined"
@@ -247,12 +266,19 @@ export default {
      * Get component name.
      */
     getComponentName(child) {
+      console.table({
+        fn: 'getComponentName',
+        child: child
+      });
       return child.prefixComponent
         ? `form-${child.component}`
         : child.component;
     },
 
     setConditions() {
+      console.table({
+        fn: 'setConditions'
+      });
       if (this.field.displayIf) {
         this.setAllAttributeWatchers(this.$root);
       }
@@ -266,6 +292,9 @@ export default {
   },
 
   mounted() {
+    console.table({
+      fn: 'mounted'
+    });
     if (this.field.displayIf) {
       this.setConditions();
     }
