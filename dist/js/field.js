@@ -5388,17 +5388,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 
 var _hoisted_1 = {
+  key: 0
+};
+var _hoisted_2 = {
   key: 1,
   "class": "flex flex-col p-8 items-center justify-center"
 };
-var _hoisted_2 = {
+var _hoisted_3 = {
   "class": "text-center my-4 font-bold text-80 text-xl"
 };
-var _hoisted_3 = {
+var _hoisted_4 = {
   key: 2,
   "class": "flex flex-col p-8 items-center justify-center"
 };
-var _hoisted_4 = {
+var _hoisted_5 = {
   "class": "text-center my-4 font-bold text-80 text-xl"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -5443,7 +5446,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           field: $props.field
         }, null, 8
         /* PROPS */
-        , ["child", "field"]), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(child.fields, function (childField, childFieldIndex) {
+        , ["child", "field"]), child.fields && child.fields.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(child.fields, function (childField, childFieldIndex) {
           return (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)(((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)((0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveDynamicComponent)($options.getComponentName(childField)), {
             conditions: $props.conditions,
             errors: _ctx.errors,
@@ -5459,12 +5462,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               return _ctx.$emit('file-deleted');
             }),
             "show-help-text": childField.helpText != null
-          }, null, 8
-          /* PROPS */
+          }, null, 40
+          /* PROPS, HYDRATE_EVENTS */
           , ["conditions", "errors", "field", "index", "parent-index", "resource-id", "resource-name", "via-resource", "via-resource-id", "show-help-text"])), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, child.opened]]);
         }), 128
         /* KEYED_FRAGMENT */
-        ))];
+        ))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)];
       }),
       _: 2
       /* DYNAMIC */
@@ -5474,7 +5477,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     , ["class", "style"]);
   }), 128
   /* KEYED_FRAGMENT */
-  )) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.__("No related :pluralLabel yet.", {
+  )) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.__("No related :pluralLabel yet.", {
     pluralLabel: $props.field.pluralLabel
   })), 1
   /* TEXT */
@@ -5482,23 +5485,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     field: $props.field
   }, null, 8
   /* PROPS */
-<<<<<<< HEAD
   , ["field"])]))], 64
   /* STABLE_FRAGMENT */
-<<<<<<< HEAD
-<<<<<<< HEAD
   )) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.__("You cannot add :pluralLabel.", {
-=======
-  , ["field"])]))], 2112
-  /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
-  )) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.__("You cannot add :pluralLabel.", {
->>>>>>> parent of a5ce409 (Try migration build)
-=======
-  )) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.__("You cannot add :pluralLabel.", {
->>>>>>> parent of 6cd194b (Build)
-=======
-  )) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.__("You cannot add :pluralLabel.", {
->>>>>>> parent of 6cd194b (Build)
     pluralLabel: $props.field.pluralLabel
   })), 1
   /* TEXT */

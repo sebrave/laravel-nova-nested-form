@@ -225,23 +225,15 @@ export default {
         console.log('setAllWatchers');
 
         this.field.displayIf
-<<<<<<< HEAD
             .filter((field) => {
+              console.log('filter field');
+              console.log(field);
 
               instance.fieldAttribute.match(`^${field.attribute}$`)
             })
             .forEach((field) => {
-=======
-          .filter((field) => {
-            console.log('filter field');
-            console.log(field);
-
-            instance.fieldAttribute.match(`^${field.attribute}$`)
-          })
-          .forEach((field) => {
-            console.log('forEach field');
-            console.log(field);
->>>>>>> parent of ba3540f (Remove logs & build)
+              console.log('forEach field');
+              console.log(field);
 
               const keyToWatch = instance.selectedResourceId
                   ? "selectedResourceId"
